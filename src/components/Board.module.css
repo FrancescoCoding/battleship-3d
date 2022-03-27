@@ -1,13 +1,74 @@
-.board {
-  background: #ebebeb;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+.board-container {
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: rgb(4, 0, 72);
+  /*  */
+}
+
+.board-wrapper {
   width: 100%;
-  min-height: 500px;
-  min-width: 500px;
-  padding: 3rem 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: blue; */
+}
+
+.board-container__level-selector {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  padding-right: 1rem;
+}
+.board-container__level-selector > * {
+  margin-bottom: 0.6rem;
+}
+
+.board {
+  background: var(--card-colour);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: grid;
+  height: 500px;
+  width: 500px;
+  margin-bottom: 1rem;
+}
+.board.water {
+  background: #0967a5 !important;
+  /* Create a grid 4x4 */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+.board.ground {
+  background: #049b37 !important;
+  /* Create a grid 5x5 */
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+.board.air {
+  background: #12ebfa !important;
+  /* Create a grid 6x6 */
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}
+
+.arrow {
+  cursor: pointer;
+}
+.arrow:hover {
+  color: var(--card-colour-darkest) !important;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: var(--card-colour);
+  margin-bottom: 0.5rem;
+  user-select: none;
 }

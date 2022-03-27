@@ -1,3 +1,12 @@
+:root {
+  --card-colour-light: #fafafa;
+  --card-colour: #ebebeb;
+  --card-colour-darker: #d6d6d6;
+  --card-colour-darkest: #c0c0c0;
+
+  --water-light-colour: #00a0ff;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

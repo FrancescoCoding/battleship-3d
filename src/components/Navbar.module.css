@@ -1,0 +1,30 @@
+.navbar {
+  position: fixed;
+  background-color: transparent;
+  border-radius: 0;
+  margin-bottom: 0;
+  margin: auto;
+  width: 100%;
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  z-index: 1;
+}
+
+.navbar__container__title {
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.three-span {
+  color: #ff0000 !important;
+}
+
+.D-span {
+  color: #00ffff !important;
+}

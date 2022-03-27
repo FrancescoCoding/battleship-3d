@@ -1,7 +1,13 @@
 import Board from "./components/Board.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 const App = () => {
-  return <Board />;
+  return (
+    <>
+      <Navbar />
+      <Board />
+    </>
+  );
 };
 
 export default App;
