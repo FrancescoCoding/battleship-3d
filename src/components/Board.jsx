@@ -1,11 +1,13 @@
 import styles from "./Board.module.css";
 
 import { useEffect, useState } from "react";
-import { levels, lvlIDs } from "../engine";
+import { playerTwoLevels, lvlIDs, checkPlayerTwoGrid } from "../engine";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import ProgressBar from "@ramonak/react-progress-bar";
 
 import Cell from "./Cell.jsx";
+
+import { startGameOnePlayer } from "../engine";
 
 const printObj = obj => {
   let arr = [];
@@ -16,30 +18,33 @@ const printObj = obj => {
   return arr;
 };
 
-const Board = () => {
+const Board = props => {
   const [levelIndex, setLevelIndex] = useState(0);
-  const [level, setLevel] = useState(levels[levelIndex]);
+  const [level, setLevel] = useState(playerTwoLevels[levelIndex]);
   const [levelName, setLevelName] = useState();
-  const landConqueredPercentage = 70;
 
   const switchUpHandler = () => {
     if (levelIndex !== 2) {
       setLevelIndex(levelIndex + 1);
-      setLevel(levels[levelIndex + 1]);
+      setLevel(playerTwoLevels[levelIndex + 1]);
     } else if (levelIndex === 2) {
       setLevelIndex(0);
-      setLevel(levels[0]);
+      setLevel(playerTwoLevels[0]);
     }
+
+    return levelIndex;
   };
 
   const switchDownHandler = () => {
     if (levelIndex !== 0) {
       setLevelIndex(levelIndex - 1);
-      setLevel(levels[levelIndex - 1]);
+      setLevel(playerTwoLevels[levelIndex - 1]);
     } else if (levelIndex === 0) {
       setLevelIndex(2);
-      setLevel(levels[2]);
+      setLevel(playerTwoLevels[2]);
     }
+
+    return levelIndex;
   };
 
   console.log("#################################");
@@ -53,9 +58,16 @@ const Board = () => {
     setLevelName(currentLevelName);
   }, [currentLevelName]);
 
+  // Whenever the levelIndex changes, the grid is updated
+
+  useEffect(() => {
+    setLevel(playerTwoLevels[levelIndex]);
+  }, [levelIndex]);
+
   console.log(currentLevelName, "currentLevelName");
   console.log(level, `Grid for ${currentLevelName} level`);
-
+  console.log(playerTwoLevels, "levels");
+  <div class="Cell_cell__r49dY " style="border: 1px solid grey;"></div>;
   return (
     <section className={styles["board-container"]}>
       <div className={styles["board-wrapper"]}>
@@ -76,28 +88,30 @@ const Board = () => {
         <div className="middle-column">
           <h1 className={styles.title}>Attack by {currentLevelName} </h1>
           <div className={`${styles.board} ${styles[`${levelName}`]}`}>
-            <>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-              <Cell>Hi</Cell>
-            </>
+            {playerTwoLevels[levelIndex].map((row, rowIndex) => {
+              return (
+                <div className={styles.row} key={rowIndex}>
+                  {row.map((col, colIndex) => {
+                    // const percentage = cell.percentage;
+
+                    return (
+                      <Cell
+                        styles={{ border: "1px solid grey" }}
+                        key={colIndex}
+                        rowIndex={rowIndex}
+                        colIndex={colIndex}
+                        levelIndex={levelIndex}
+                      ></Cell>
+                    );
+                  })}
+                </div>
+              );
+            })}
           </div>
           <p style={{ color: "white", fontSize: "19px" }}>Land conquered</p>
           <ProgressBar
-            completed={landConqueredPercentage}
+            // Mark completed as the percentage of the progress bar
+            completed={20}
             maxCompleted={100}
             bgColor="#0967a5"
             height="20px"

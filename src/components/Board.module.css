@@ -5,6 +5,8 @@
   justify-content: center;
   align-items: center;
   background: rgb(4, 0, 72);
+  z-index: 10 !important;
+
   /*  */
 }
 
@@ -23,19 +25,23 @@
   align-items: center;
   justify-content: center;
   background: transparent;
-  padding-right: 1rem;
+  margin-right: 1.5rem;
 }
 .board-container__level-selector > * {
   margin-bottom: 0.6rem;
+  transform: translateY(0.4rem);
 }
 
 .board {
   background: var(--card-colour);
-  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   display: grid;
-  height: 500px;
-  width: 500px;
+  min-width: 500px;
+  min-height: 500px;
+  height: 500px !important;
+  width: 500px !important;
+  max-width: 500px !important;
+  max-height: 500px !important;
   margin-bottom: 1rem;
 }
 .board.water {
