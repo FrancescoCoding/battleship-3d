@@ -1,2 +1,2 @@
 # Battleship 3D 🚢✈️🔫
-Initial commit
+Challenge for #RGUHack2022 from Aize.
